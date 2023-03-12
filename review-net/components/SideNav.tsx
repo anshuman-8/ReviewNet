@@ -9,16 +9,17 @@ export default function SideNav() {
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
-              <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
+              <Link href="/" className="flex ml-2 md:mr-24">
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src="https://neurostars.org/uploads/default/original/1X/cb997a27c1b6f5ebf21fb07da6b77b0df9247c9a.png"
                   className="h-8 mr-3"
-                  alt="FlowBite Logo"
+                  alt="sci commons Logo"
+                  // width={36}
                 />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Sci Commons
                 </span>
-              </a>
+              </Link>
             </div>
             <div className="flex items-center">
               <div className="flex items-center ml-3">
@@ -49,6 +50,19 @@ export default function SideNav() {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+          <Link href="/profile" className="flex items-center justify-center space-x-3 border-black/50 my-2 bg-slate-100 py-3 rounded-md" >
+            <img
+              className="rounded-full w-9 h-9"
+              src="https://avatars.githubusercontent.com/u/90995338?s=64&v=4"
+              alt="profile picture"
+            />
+            <div className="space-y-0.5 font-medium dark:text-white text-left">
+              <div>Anshuman Swain</div>
+              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
+                ~Anshuman_Swain1
+              </div>
+            </div>
+          </Link>
           <ul className="space-y-2">
             <li>
               <Link
@@ -70,7 +84,7 @@ export default function SideNav() {
             </li>
             <li>
               <Link
-                href="/submitArticle"
+                href="/venues"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -82,7 +96,30 @@ export default function SideNav() {
                 >
                   <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Kanban</span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Venues</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/submitArticle"
+                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  Submit Article
+                </span>
               </Link>
             </li>
             <li>
@@ -106,30 +143,10 @@ export default function SideNav() {
                 </span>
               </Link>
             </li>
+
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
+              <Link
+                href="/sad"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -146,7 +163,7 @@ export default function SideNav() {
                   ></path>
                 </svg>
                 <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a
