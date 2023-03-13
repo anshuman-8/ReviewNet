@@ -25,7 +25,7 @@ export default function SideNav() {
               </Link>
             </div>
             <div className="flex items-center">
-              <div className="flex items-center ml-3">
+              <div className="flex items-center ml-3 mr-56">
                 <div>
                   <div className="relative w-full mr-3 formkit-field">
                     {/* <label className="hidden block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"/> */}

@@ -5,7 +5,7 @@ import Router from "next/router";
 export default function Card() {
   return (
     <div>
-      <div onClick={()=>Router.push("/article/1")} className="border-2 border-gray-300 my-3 mx-5 max-w-7xl rounded-md cursor-pointer">
+      <div onClick={()=>Router.push("/article/1")} className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md cursor-pointer">
         <div
           className="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800"
           id="about"
