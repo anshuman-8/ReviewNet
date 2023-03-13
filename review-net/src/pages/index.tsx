@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Dashboard from 'components/Dashboard'
 import Card from 'components/Card'
 
 

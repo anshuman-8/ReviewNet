@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { BsSearch } from "react-icons/bs";
+import { AiFillHome, AiFillFileAdd } from "react-icons/ai";
+import Image from "next/image";
 
 export default function SideNav() {
   return (
@@ -10,11 +12,12 @@ export default function SideNav() {
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <Link href="/" className="flex ml-2 md:mr-24">
-                <img
+                <Image
                   src="https://neurostars.org/uploads/default/original/1X/cb997a27c1b6f5ebf21fb07da6b77b0df9247c9a.png"
-                  className="h-8 mr-3"
+                  className="h-9 object-left mr-3"
                   alt="sci commons Logo"
-                  // width={36}
+                  width={36}
+                  height={36}
                 />
                 <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Sci Commons
@@ -51,10 +54,12 @@ export default function SideNav() {
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <Link href="/profile" className="flex items-center justify-center space-x-3 border-black/50 my-2 bg-slate-100 py-3 rounded-md" >
-            <img
+            <Image
               className="rounded-full w-9 h-9"
               src="https://avatars.githubusercontent.com/u/90995338?s=64&v=4"
               alt="profile picture"
+              width={36}
+              height={36}
             />
             <div className="space-y-0.5 font-medium dark:text-white text-left">
               <div>Anshuman Swain</div>
@@ -69,16 +74,7 @@ export default function SideNav() {
                 href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <svg
-                  aria-hidden="true"
-                  className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                  <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                </svg>
+                <AiFillHome size={22} className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
@@ -104,19 +100,7 @@ export default function SideNav() {
                 href="/submitArticle"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <AiFillFileAdd className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   Submit Article
                 </span>
@@ -183,28 +167,7 @@ export default function SideNav() {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign In</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                <span className="flex-1 ml-3 whitespace-nowrap">Sign Out</span>
               </a>
             </li>
           </ul>
