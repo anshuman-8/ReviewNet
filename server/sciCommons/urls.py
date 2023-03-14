@@ -12,11 +12,11 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.loginUser, name='login'),
     path('articles/', views.getArticles, name='articles'),
+    path('articles/create/', views.createArticle, name='createArticle'),
     path('articles/<slug:slug>/', views.getArticle, name='article'),
     path('articles/<slug:slug>/update/', views.updateArticle, name='updateArticle'),
     path('articles/<slug:slug>/addComment/', views.addComment, name='addComment'),
     path('articles/<slug:slug>/addLike/', views.addLike, name='addLike'),
-    path('articles/create/', views.createArticle, name='createArticle'),
 ]
 
 # Path: server/sciCommons/serializer.py

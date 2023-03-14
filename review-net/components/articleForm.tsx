@@ -1,20 +1,50 @@
 import React from "react";
 
 export default function ArticleForm() {
+
+  const url = "http://127.0.0.1:8000/api/articles/create/";
+
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log("submitting");
+    const data = new FormData(e.target);
+    const value = Object.fromEntries(data.entries());
+    console.log(value.author);
+    console.log(JSON.stringify(value));
+    
+    
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(value),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+
+
+  };
+
+
   return (
     <div className="mx-14">
-      <form>
+      <form onSubmit={
+        (e) => submitForm(e)
+      }>
         <div className="grid gap-6 mb-6 ">
           <div>
             <label
-              htmlFor="first_name"
+              htmlFor="title"
               className="block mb-4 text-sm font-medium text-gray-900 dark:text-white"
             >
               Title
             </label>
             <input
               type="text"
-              id="first_name"
+              id="title"
+              name="title"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required
             />
@@ -29,28 +59,30 @@ export default function ArticleForm() {
             <div className="grid gap-2 md:grid-cols-3">
               <div>
                 <label
-                  htmlFor="id"
+                  htmlFor="userName"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   User Id
                 </label>
                 <input
                   type="text"
-                  id="id"
+                  id="userName"
+                  name="author"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
               </div>
               <div>
                 <label
-                  htmlFor="phone"
+                  htmlFor="fullName"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Full Name
                 </label>
                 <input
                   type="tel"
-                  id="phone"
+                  id="fullName"
+                  name="fullName"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder=""
                   required
@@ -58,14 +90,15 @@ export default function ArticleForm() {
               </div>
               <div>
                 <label
-                  htmlFor="website"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Email
                 </label>
                 <input
                   type="email"
-                  id="website"
+                  id="email"
+                  name="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
                 />
@@ -76,41 +109,59 @@ export default function ArticleForm() {
 
         <div className="mb-6">
           <label
-            htmlFor="email"
+            htmlFor="keywords"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Keywords
           </label>
           <input
             type="text"
-            id="email"
+            id="keywords"
+            name="keywords"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
         </div>
         <div className="mb-6">
           <label
-            htmlFor="password"
+            htmlFor="tldr"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             TL;DR
           </label>
           <input
             type="text"
-            id="password"
+            id="tldr"
+            name="tldr"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
         </div>
         <div className="mb-6">
           <label
-            htmlFor="confirm_password"
+            htmlFor="articleUrl"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            URL to article
+          </label>
+          <input
+            type="link"
+            id="articleUrl"
+            name="articleUrl"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            required
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="abstract"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Abstract
           </label>
           <textarea
-            id=""
+            id="absctract"
+            name="content"
             cols={4}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""

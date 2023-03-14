@@ -1,8 +1,28 @@
-import Head from 'next/head'
-import Card from 'components/Card'
-
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import CardDummy from "components/CardDummy";
+import Card from "components/Card";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 export default function Home() {
+  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState([]);
+
+  const url = "http://127.0.0.1:8000/api/articles/";
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setArticles(data);
+        setLoading(false);
+      }
+      )
+      .catch((err) => console.log(err));
+
+
+  },[]);
   return (
     <>
       <Head>
@@ -13,17 +33,31 @@ export default function Home() {
       </Head>
       <main className="relative h-full w-full transition-width flex flex-col overflow-hidden items-stretch flex-1">
         <div className=" flex-1 overflow-y-auto">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+          {loading ? (
+            <AiOutlineLoading3Quarters className="animate-spin" />
+          ) : (
+            articles.map((article, i) => {
+              return (
+                <Card
+                  key={i}
+                  title={article.title}
+                  abstract={article.content}
+                  link={article.articleUrl}
+                />
+              );
+            })
+          )}
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
+          <CardDummy />
         </div>
       </main>
     </>
-  )
+  );
 }

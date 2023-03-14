@@ -2,9 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Router from "next/router";
 
-export default function Card(props) {
-
-    const {title, abstract, link} = props;
+export default function CardDummy() {
   return (
     <div>
       <div onClick={()=>Router.push("/article/1")} className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md cursor-pointer">
@@ -15,13 +13,21 @@ export default function Card(props) {
           aria-labelledby="about-tab"
         >
           <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            {title}
+            Automated Anatomical Labeling of Activations in SPM Using a
+            Macroscopic Anatomical Parcellation of the MNI MRI Single-Subject
+            Brain
           </h2>
           <p className="mb-3 text-gray-500 dark:text-gray-400">
-           {abstract}
+            An anatomical parcellation of the spatially normalized
+            single-subject high-resolution T1 volume provided by the Montreal
+            Neurological Institute (MNI) (D. L. Collins et al., 1998, Trans.
+            Med. Imag. 17, 463-468) was performed. The MNI single-subject main
+            sulci were first delineated and further used as landmarks for the 3D
+            definition of 45 anatomical volumes of interest (AVOI) in each
+            hemisphere...
           </p>
           <Link
-            href={link}
+            href="https://www.sciencedirect.com/science/article/abs/pii/S1053811901909784?dgcid=api_sd_search-api-endpoint"
             className="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700"
           >
             Read now
