@@ -1,8 +1,13 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 export default function ArticleForm() {
 
-  const url = "http://127.0.0.1:8000/api/articles/create/";
+  // const baseURL = 'http://127.0.0.1:8000/api/'
+  const baseURL = 'http://anshuman.pythonanywhere.com/api/'
+  const url = baseURL+"articles/create/";
+
+  const router = useRouter();
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -24,7 +29,7 @@ export default function ArticleForm() {
       .then((data) => console.log(data))
       .catch((err) => console.log(err));
 
-
+      router.push("/")
   };
 
 
@@ -112,7 +117,7 @@ export default function ArticleForm() {
             htmlFor="keywords"
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            Keywords
+            Keywords(separated with {'","'})
           </label>
           <input
             type="text"
@@ -145,7 +150,7 @@ export default function ArticleForm() {
             URL to article
           </label>
           <input
-            type="link"
+            type="url"
             id="articleUrl"
             name="articleUrl"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

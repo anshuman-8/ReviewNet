@@ -4,10 +4,10 @@ import Router from "next/router";
 
 export default function Card(props) {
 
-    const {title, abstract, link} = props;
+    const {title, abstract, link, slug} = props;
   return (
     <div>
-      <div onClick={()=>Router.push("/article/1")} className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md cursor-pointer">
+      <div onClick={()=>Router.push("/article/"+slug)} className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md cursor-pointer">
         <div
           className="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800"
           id="about"
@@ -34,7 +34,7 @@ export default function Card(props) {
               <path
                 fill-rule="evenodd"
                 d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </Link>

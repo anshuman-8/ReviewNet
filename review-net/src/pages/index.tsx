@@ -8,7 +8,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
 
-  const url = "http://127.0.0.1:8000/api/articles/";
+  // const baseURL = 'http://127.0.0.1:8000/api/'
+  const baseURL = 'http://anshuman.pythonanywhere.com/api/'
+  const url = baseURL+"/articles/";
 
   useEffect(() => {
     setLoading(true);
@@ -34,7 +36,7 @@ export default function Home() {
       <main className="relative h-full w-full transition-width flex flex-col overflow-hidden items-stretch flex-1">
         <div className=" flex-1 overflow-y-auto">
           {loading ? (
-            <AiOutlineLoading3Quarters className="animate-spin" />
+            <AiOutlineLoading3Quarters className="animate-spin my-5 h-7 w-7 mx-10" />
           ) : (
             articles.map((article, i) => {
               return (
@@ -43,19 +45,18 @@ export default function Home() {
                   title={article.title}
                   abstract={article.content}
                   link={article.articleUrl}
+                  slug={article.slug}
                 />
               );
             })
           )}
+          {/* <CardDummy />
           <CardDummy />
           <CardDummy />
           <CardDummy />
           <CardDummy />
           <CardDummy />
-          <CardDummy />
-          <CardDummy />
-          <CardDummy />
-          <CardDummy />
+          <CardDummy /> */}
         </div>
       </main>
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import { AiFillBook,AiTwotoneStar } from "react-icons/ai";
 import { IoMdQuote } from "react-icons/io";
 import MessageComponent from "components/MessageComponent";
+import CommentModal from "components/CommentModal";
 
 export default function ArticleView() {
   return (
@@ -28,13 +29,7 @@ export default function ArticleView() {
         </p>
         <div className="flex flex-row justify-between mx-10">
           <div className="inline-flex rounded-md shadow-sm" role="group">
-            <button
-              type="button"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-l-lg hover:bg-gray-600 hover:text-white focus:z-10 dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-400"
-            >
-              <AiTwotoneStar className="w-4 h-4 mr-2 fill-current"/>
-              Review
-            </button>
+          <CommentModal/>
             <button
               type="button"
               className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-600 hover:text-white focus:z-10 dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-400"
