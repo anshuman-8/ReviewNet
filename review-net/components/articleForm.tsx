@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 export default function ArticleForm() {
 
   // const baseURL = 'http://127.0.0.1:8000/api/'
-  const baseURL = 'http://anshuman.pythonanywhere.com/api/'
-  const url = baseURL+"articles/create/";
+  // const baseURL = 'http://anshuman.pythonanywhere.com/api/'
+  const url = "http://anshuman.pythonanywhere.com/api/articles/create/";
 
   const router = useRouter();
 
