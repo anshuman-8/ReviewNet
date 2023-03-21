@@ -24,6 +24,7 @@ class Article(models.Model):
     likes = models.IntegerField(default=0)
     author = models.ManyToManyField(User, related_name='articles')
     comments = models.ManyToManyField('Comment', related_name='articles', blank=True)
+    type = models.CharField(max_length=20, default="open") # open,single,double
 
     def __str__(self):
         return self.title
@@ -36,3 +37,16 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.content
+    
+class Community(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, max_length=255)
+    description = models.TextField()
+    createdOn = models.DateTimeField(auto_now_add=True)
+    articles = models.ManyToManyField(Article, related_name='communities', blank=True)
+    members = models.ManyToManyField(User, related_name='communities', blank=True)
+    admins = models.ForeignKey(User, related_name='admin_communities', blank=True, on_delete=models.CASCADE)
+    articles = models.ManyToManyField(Article, related_name='communities', blank=True)
+
+    def __str__(self):
+        return self.name

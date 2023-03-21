@@ -5,6 +5,7 @@ import { AiFillHome, AiFillFileAdd } from "react-icons/ai";
 import Image from "next/image";
 
 export default function SideNav() {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
       <nav className="fixed top-0 z-40 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -53,7 +54,10 @@ export default function SideNav() {
         aria-label="Sidebar"
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-          <Link href="/profile" className="flex items-center justify-center space-x-3 border-black/50 my-2 bg-slate-100 py-3 rounded-md" >
+          <Link
+            href="/profile"
+            className="flex items-center justify-center space-x-3 border-black/50 my-2 bg-slate-100 py-3 rounded-md"
+          >
             <Image
               className="rounded-full w-9 h-9"
               src="https://avatars.githubusercontent.com/u/90995338?s=64&v=4"
@@ -74,13 +78,92 @@ export default function SideNav() {
                 href="/"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <AiFillHome size={22} className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                <AiFillHome
+                  size={22}
+                  className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                />
                 <span className="ml-3">Dashboard</span>
               </Link>
             </li>
             <li>
               <Link
-                href="/venues"
+                href="/submitArticle"
+                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <AiFillFileAdd className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  Submit Article
+                </span>
+              </Link>
+            </li>
+            <li>
+              <button
+                type="button"
+                className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                </svg>
+                <span
+                  className="flex-1 ml-3 text-left whitespace-nowrap"
+                  sidebar-toggle-item
+                >
+                  Community
+                </span>
+                <svg
+                  sidebar-toggle-item
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <ul
+                id="dropdown-example"
+                className={isOpen ? "py-2 space-y-2" : "hidden py-2 space-y-2"}
+              >
+                <li>
+                  <Link
+                    href="/add-community"
+                    className="flex items-center w-full p-2 text-base font-medium text-blue-900 transition duration-75 rounded-lg pl-11 group hover:bg-blue-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Create Community
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    Transition of Machile Learning Research
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    The Team of ML Research
+                  </a>
+                </li>
+              </ul>
+            </li>
+            {/* <li>
+              <Link
+                href="/community"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <svg
@@ -92,20 +175,12 @@ export default function SideNav() {
                 >
                   <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Venues</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/submitArticle"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <AiFillFileAdd className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
                 <span className="flex-1 ml-3 whitespace-nowrap">
-                  Submit Article
+                  Create Comminity
                 </span>
               </Link>
-            </li>
+            </li> */}
+
             <li>
               <Link
                 href="#"
