@@ -17,8 +17,8 @@ export default function ArticleView() {
   const { articleSlug } = router.query;
   console.log(articleSlug);
 
-  const baseURL = "http://127.0.0.1:8000/api/";
-  // const baseURL = 'https://anshuman.pythonanywhere.com/api/';
+  // const baseURL = "http://127.0.0.1:8000/api/";
+  const baseURL = 'https://anshuman.pythonanywhere.com/api/';
   const url = baseURL + "articles/" + articleSlug + "/";
 
   fetch(url, {

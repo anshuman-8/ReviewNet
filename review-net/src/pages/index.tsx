@@ -8,8 +8,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
 
-  const baseURL = 'http://127.0.0.1:8000/api/'
-  // const baseURL = 'https://anshuman.pythonanywhere.com/api/';
+  // const baseURL = 'http://127.0.0.1:8000/api/'
+  const baseURL = 'https://anshuman.pythonanywhere.com/api/';
   const url = baseURL+"articles/";
 
   useEffect(() => {

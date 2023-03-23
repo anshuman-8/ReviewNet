@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { MdAddBox } from "react-icons/md";
 
 export default function ArticleForm() {
-  const baseURL = "http://127.0.0.1:8000/api/";
-  // const baseURL = 'https://anshuman.pythonanywhere.com/api/';
+  // const baseURL = "http://127.0.0.1:8000/api/";
+  const baseURL = 'https://anshuman.pythonanywhere.com/api/';
   const url = baseURL + "articles/create/";
 
   const [authors, setAuthors] = React.useState([
