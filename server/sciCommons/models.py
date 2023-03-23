@@ -19,6 +19,9 @@ class User(AbstractUser):
     
     def getArticles(self):
         return self.meta.articles.all()
+    
+    class Meta:
+        ordering = ['username']
 
 class UserMeta(models.Model):
     bio = models.TextField(blank=True, null=True)
@@ -31,11 +34,11 @@ class UserMeta(models.Model):
     institution = models.CharField(max_length=255, blank=True, null=True)
     field = models.CharField(max_length=255, blank=True, null=True)
     bookmarks = models.ManyToManyField('Article', related_name='bookmarks', blank=True)
-    likes = models.ManyToManyField('Article', related_name='likes', blank=True)
-    dislikes = models.ManyToManyField('Article', related_name='dislikes', blank=True)
-    comments = models.ManyToManyField('Comment', related_name='comments', blank=True)
-    # communities = models.ManyToManyField('Community', related_name='communities', blank=True)
-    articles = models.ManyToManyField('Article', related_name='authors', blank=True)
+    likes = models.ManyToManyField('Article', related_name='likes',related_query_name='usermeta', blank=True)
+    dislikes = models.ManyToManyField('Article', related_name='dislikes',related_query_name='usermeta', blank=True)
+    comments = models.ManyToManyField('Comment', related_name='comments', related_query_name='usermeta', blank=True)
+    communities = models.ManyToManyField('Community', related_name='community_meta',related_query_name='usermeta', blank=True)
+    articles = models.ManyToManyField('Article', related_name='authors',related_query_name='usermeta', blank=True)
 
 
 class Article(models.Model):
@@ -52,11 +55,14 @@ class Article(models.Model):
     articleUrl = models.URLField(blank=True, null=True)
     createdOn = models.DateTimeField(auto_now_add=True)
     author = models.ManyToManyField(User, related_name='authors')
-    type = models.CharField(max_length=20, default="op", choices=ARTICLE_TYPE) # open,single,double
-    meta = models.ForeignKey('ArticleMeta', on_delete=models.CASCADE, blank=True, null=True)
+    type = models.CharField(max_length=5, default="op", choices=ARTICLE_TYPE) # open,single,double
+    meta = models.ForeignKey('ArticleMeta', on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return self.title
+    
+    # class Meta:
+    #     ordering = ['-createdOn']
     
 class ArticleMeta(models.Model):
     comments = models.ManyToManyField('Comment', related_name='articles_meta', blank=True)
@@ -86,10 +92,13 @@ class Review(Comment):
     )
     title = models.CharField(max_length=255)
     type = models.CharField(max_length=20, default="review", choices=REVIEW_TYPE)
-    replys = models.ManyToManyField('Review', related_name='replys', blank=True)
+    replys = models.ManyToManyField('self', related_name='replies', blank=True)
 
     def __str__(self):
         return self.content
+    
+    class Meta:
+        ordering = ['-createdOn']
 
 class Membership(models.Model):
     MEMBERSHIP_TYPE = (

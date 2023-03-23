@@ -43,7 +43,7 @@ export default function Home() {
                 <Card
                   key={i}
                   title={article.title}
-                  abstract={article.content}
+                  abstract={article.abstract}
                   link={article.articleUrl}
                   slug={article.slug}
                 />

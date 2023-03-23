@@ -3,26 +3,29 @@ import React from "react";
 import Router from "next/router";
 
 export default function Card(props) {
-
-    const {title, abstract, link, slug} = props;
+  const { title, abstract, link, slug } = props;
   return (
     <div>
-      <div onClick={()=>Router.push("/article/"+slug)} className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md cursor-pointer">
+      <div className="border-2 border-gray-300 my-3 mx-5 max-w-6xl rounded-md">
         <div
           className="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800"
           id="about"
           role="tabpanel"
           aria-labelledby="about-tab"
         >
-          <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          <h2
+            className="mb-3 text-2xl font-extrabold tracking-tight hover:text-blue-700 text-gray-900 dark:text-white cursor-pointer"
+            onClick={() => Router.push("/article/" + slug)}
+          >
             {title}
           </h2>
-          <p className="mb-3 text-gray-500 dark:text-gray-400">
-           {abstract}
-          </p>
+          <div className="mb-2 text-gray-500 inline-block dark:text-gray-400 max-h-24 overflow-hidden">
+              {abstract}...
+          </div>
+          <div>
           <Link
             href={link}
-            className="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700"
+            className="inline-flex items-center bg-blue-100 p-1 rounded-md font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700"
           >
             Read now
             <svg
@@ -38,6 +41,8 @@ export default function Card(props) {
               ></path>
             </svg>
           </Link>
+          </div>
+          
         </div>
       </div>
     </div>

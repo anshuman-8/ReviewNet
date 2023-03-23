@@ -44,9 +44,9 @@ def getArticles(request):
 # POST for creating new article
 @api_view(['POST'])
 def createArticle(request):
-    print(request.data)
     request.data["author"] = ["1"]
     request.data["slug"] = slugify(request.data["title"])
+    print(request.data)
     serializer = ArticleSerializer(data=request.data)
 
     if serializer.is_valid():
